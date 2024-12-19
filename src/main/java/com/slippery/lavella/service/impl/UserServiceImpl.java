@@ -65,11 +65,32 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto deleteUser(Long userId) {
-        return null;
+        UserDto response =new UserDto();
+        var existingUser =repository.findById(userId);
+        if(existingUser.isPresent()){
+            repository.delete(existingUser.get());
+            response.setStatusCode(204);
+            response.setMessage("account for user with id "+userId+" successfully deleted");
+        }
+        else{
+            response.setErrorMessage("Could not find user with id "+userId);
+            response.setStatusCode(404);
+        }
+        return response;
     }
 
     @Override
     public UserDto getUserById(Long userId) {
-        return null;
+        UserDto response =new UserDto();
+        var existingUser =repository.findById(userId);
+        if(existingUser.isEmpty()){
+            response.setErrorMessage("User with id "+userId+" not found");
+            response.setStatusCode(404);
+            return response;
+        }
+        response.setUser(existingUser.get());
+        response.setMessage("User with id "+userId+" was found");
+        response.setStatusCode(200);
+        return response;
     }
 }

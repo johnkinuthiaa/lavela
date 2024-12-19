@@ -17,7 +17,9 @@ public class ImagesAndMedia {
     private Long id;
     private String imageName;
     private String imageType;
+    @Lob
     private byte[] profilePhoto;
+    @Lob
     private byte[] posts;
     @Lob
     private String postCaption;
