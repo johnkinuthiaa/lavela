@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/posts")
+@CrossOrigin
 public class ImageAndMediaController {
     private final ImageAndMediaService service;
 
@@ -31,6 +32,10 @@ public class ImageAndMediaController {
     @DeleteMapping("/delete/id")
     public ResponseEntity<ImageAndMediaDto> deleteImageById(@RequestParam Long id, @RequestParam Long userId){
         return ResponseEntity.ok(service.deleteImageById(id, userId));
+    }
+    @GetMapping("/get/all")
+    public ResponseEntity<ImageAndMediaDto> getAllImages(@RequestParam Long userId){
+        return ResponseEntity.ok(service.getAllImages(userId));
     }
 
 }

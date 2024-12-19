@@ -92,7 +92,17 @@ public class ImageAndMediaServiceImpl implements ImageAndMediaService {
     }
 
     @Override
-    public ImageAndMediaDto getAllImages(Long id, Long userId) {
-        return null;
+    public ImageAndMediaDto getAllImages(Long userId) {
+        ImageAndMediaDto response =new ImageAndMediaDto();
+        Optional<User> user =userRepository.findById(userId);
+        if(user.isEmpty()){
+            response.setMessage("user not found");
+            response.setStatusCode(204);
+            return response;
+        }
+        response.setImagesAndMediaList(repository.findAll().stream().filter(imagesAndMedia -> imagesAndMedia.getUser().getId().equals(userId)).toList());
+        response.setMessage("posts for user"+user.get().getUsername());
+        response.setStatusCode(200);
+        return response;
     }
 }

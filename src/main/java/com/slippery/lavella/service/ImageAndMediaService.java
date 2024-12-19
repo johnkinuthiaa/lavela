@@ -10,5 +10,5 @@ public interface ImageAndMediaService {
     ImageAndMediaDto createNewImageMedia(MultipartFile image,Long userId,String caption) throws IOException;
     ImageAndMediaDto getImageById(Long id,Long userId);
     ImageAndMediaDto deleteImageById(Long id,Long userId);
-    ImageAndMediaDto getAllImages(Long id,Long userId);
+    ImageAndMediaDto getAllImages(Long userId);
 }
