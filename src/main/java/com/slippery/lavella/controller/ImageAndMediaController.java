@@ -1,7 +1,6 @@
 package com.slippery.lavella.controller;
 
 import com.slippery.lavella.dto.ImageAndMediaDto;
-import com.slippery.lavella.models.ImagesAndMedia;
 import com.slippery.lavella.service.ImageAndMediaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
