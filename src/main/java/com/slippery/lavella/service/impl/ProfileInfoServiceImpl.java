@@ -32,7 +32,7 @@ public class ProfileInfoServiceImpl implements ProfileInfoService {
                 .toList();
         if(existingProfile.isEmpty()){
             ProfileInfo profile =new ProfileInfo();
-            profile.setBio(profile.getBio());
+            profile.setBio(profileInfo.getBio());
             profile.setDescription(profileInfo.getDescription());
             profile.setInterests(profileInfo.getInterests());
             profile.setLocation(profileInfo.getLocation());
